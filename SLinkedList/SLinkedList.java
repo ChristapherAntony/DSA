@@ -1,4 +1,4 @@
-package SLinkedList;
+// package SLinkedList;
 
 public class SLinkedList {
 
@@ -8,7 +8,7 @@ public class SLinkedList {
 
         list.addNode(10);
         list.addNode(20);
-        list.addNode(30);
+        list.addNode(30); 
         list.addNode(40);
         
         
@@ -34,16 +34,14 @@ public class SLinkedList {
 
     // add values to linked list data as argument in function
     public void addNode(int data) {
-        Node newNode = new Node(data);
 
-        if (head == null) {
+        Node newNode = new Node(data);
+        if (head == null) { 
             head = newNode;
         } else {
             tail.next = newNode;
         }
-        tail = newNode;
-
-        System.out.println("new node added");
+        tail = newNode; 
     }
 
     // display functions
@@ -77,7 +75,6 @@ public class SLinkedList {
         if(temp==null){
             return;
         }
-
         //case 3 data eq tail
         if(temp==tail){
             tail=prev; // move temp to prev node 
@@ -97,19 +94,34 @@ public class SLinkedList {
         while(temp!=null && temp.data!=nextTo){
                temp=temp.next; 
         }
-        if(temp==null){
+        if(temp==null){   // not able to find the values no need to add
             return;
         }
         if(temp==tail){
             tail.next=newNode;
             tail=newNode;
             return;
-        }
-
+        } 
         // if the pos is between node
         newNode.next=temp.next;
         temp.next=newNode;
 
         
+    }
+
+    public void removeDuplicate(){
+        Node current =head;
+        while(current!=null){
+            Node next=current.next;
+            while(next!=null && next.data==current.data){
+                next=next.next;
+            }
+            current.next=next;
+            if(next==tail && current.data==next.data){
+                tail=current;
+                tail.next=null;
+            }
+            current=next;
+        }
     }
 }

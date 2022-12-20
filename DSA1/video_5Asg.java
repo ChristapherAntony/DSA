@@ -2,21 +2,17 @@ package DSA1;
 
 public class video_5Asg {
 	public static int[] moveToEnd(int[] array, int target) {
-	
 		for (int i = 0; i < array.length - 1; i++) {
 			if (array[i] == target) {
 				for (int j = array.length - 1; j > i; j--) {
 					if (array[j] != target) {
-						
 						array[i] += array[j];
 						array[j] = array[i] - array[j];
 						array[i] = array[i] - array[j];
-						
 					}
 				}
 			}
 		}
-			
 		return array;
 	}
 
