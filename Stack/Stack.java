@@ -11,6 +11,8 @@ public class Stack {
         }
     }
     public Node top;
+
+
     public void Display() {
         Node current = top;
         while (current != null) {
@@ -18,6 +20,7 @@ public class Stack {
             current = current.next;
         }
     }
+
     public void push(int data) {
         Node newNode = new Node(data);
         if (top == null) {
@@ -27,6 +30,7 @@ public class Stack {
             top = newNode;
         }
     }
+
     public void pop() {
         if (top == null) {
             System.out.println("Stack overflow");
@@ -34,6 +38,7 @@ public class Stack {
         }
         top = top.next;
     }
+    
     public static void main(String[] args) {
         Stack stack = new Stack();
 

@@ -20,6 +20,8 @@ public class BinarySearch {
         }
         return -1;
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////
     public static int binaryRec(int[] array , int target){
         return binaryRecHelper(array, target, 0, array.length-1);
          
@@ -39,6 +41,7 @@ public class BinarySearch {
 
         return 1;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) {
         // int [] array={2,5,8,2,4,56,45,23,9};
         int [] array={1,2,3,4,5,6,7,8,9,10};
