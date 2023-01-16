@@ -1,0 +1,14 @@
+package Stack;
+
+public class Stack_array {
+    int num=100;
+
+
+
+    public static void main(String[] args) {
+        System.out.println(num);
+    }
+    
+}
+
+

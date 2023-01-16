@@ -10,8 +10,8 @@ public class Stack {
             this.data = data;
         }
     }
-    public Node top;
 
+    public Node top;
 
     public void Display() {
         Node current = top;
@@ -31,6 +31,7 @@ public class Stack {
         }
     }
 
+    // delete from the stack
     public void pop() {
         if (top == null) {
             System.out.println("Stack overflow");
@@ -38,7 +39,7 @@ public class Stack {
         }
         top = top.next;
     }
-    
+
     public static void main(String[] args) {
         Stack stack = new Stack();
 
@@ -48,7 +49,6 @@ public class Stack {
             stack.push(i);
         }
         System.out.println("array ---- stack bellow");
- 
 
         stack.Display();
         stack.pop();

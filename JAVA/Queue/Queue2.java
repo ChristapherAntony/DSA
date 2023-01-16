@@ -28,8 +28,6 @@ public class Queue2 {
         if(front==null){
             rear=null;
         }
-        
-
     }
     public void Display(){
         Node current=front;
