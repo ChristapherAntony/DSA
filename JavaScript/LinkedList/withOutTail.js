@@ -130,10 +130,7 @@ class LinkedList {
             curr=next
         }
         this.head=prev
-
-
-
-        
+   
     }
 
     print() {
