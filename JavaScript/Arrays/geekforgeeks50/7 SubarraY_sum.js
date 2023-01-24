@@ -17,5 +17,4 @@ function subarraySum(arr, sum) {
     console.log("No subarray found");
 }
 
-
 subarraySum([1, 4, 20, 3, 10, 5], 15 )

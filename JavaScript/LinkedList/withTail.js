@@ -113,20 +113,20 @@ class LinkedList {
 
     }
     removeIndex(index) {
-        if(index<0 || index >=this.size){
+        if (index < 0 || index >= this.size) {
             return null
         }
         let removedNode
-        if(index=0){
-            removedNode=this.head
-            this.head=this.head.next
-        }else{
-            let prev=this.head
-            for(let i=0; i<index-1; i++){
-                prev=prev.next
+        if (index = 0) {
+            removedNode = this.head
+            this.head = this.head.next
+        } else {
+            let prev = this.head
+            for (let i = 0; i < index - 1; i++) {
+                prev = prev.next
             }
-            removedNode=prev.next
-            prev.next=removedNode.next
+            removedNode = prev.next
+            prev.next = removedNode.next
         }
         this.size--
         return removedNode.value
@@ -137,11 +137,21 @@ class LinkedList {
         let slow = this.head;
         let fast = this.head;
         while (fast && fast.next) {
-          slow = slow.next;
-          fast = fast.next.next;
+            slow = slow.next;
+            fast = fast.next.next;
         }
         return slow.value;
-      }
+    }
+    removeDuplicates() {
+        let current = this.head;
+        while (current && current.next) {
+            if (current.value === current.next.value) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+    }
 
 
 }
