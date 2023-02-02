@@ -106,9 +106,6 @@ public class setLinkedList {
         }
 
         newNode.next=temp;
-        
-
-
         // head=newNode;
 
     }

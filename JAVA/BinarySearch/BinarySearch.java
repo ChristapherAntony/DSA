@@ -21,7 +21,6 @@ public class BinarySearch {
     ///////////////////////////////////////////////////////////////////////////////////////
     public static int binaryRec(int[] array , int target){
         return binaryRecHelper(array, target, 0, array.length-1);
-         
     }
     public static int binaryRecHelper(int[] array , int target,int startIdx, int endIdx){
         if(startIdx>endIdx){

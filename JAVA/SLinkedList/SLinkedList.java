@@ -12,8 +12,9 @@ public class SLinkedList {
         list.addNode(40);
         
         
-        list.delete(30);
-        list.insertAfter(40, 100);
+        list.delete(40);
+        list.addNode(400);
+        // list.insertAfter(40, 100);
 
         list.display();
 
