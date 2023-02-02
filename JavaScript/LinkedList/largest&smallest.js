@@ -137,9 +137,59 @@ class LinkedList {
 
 
 }
+
+function largest (head){
+    let largest=-Infinity
+    let current=head
+    while(current){
+        if(current.value>largest){
+            largest=current.value
+        }
+        current=current.next
+    }
+    return largest
+}
+function secLargest (head){
+    let largest=-Infinity
+    let secLargest=-Infinity
+    let current=head
+    while(current){
+        if(current.value>largest){
+            secLargest=largest
+            largest=current.value
+        }else if(current.value>secLargest && current.value<largest){
+            secLargest=current.value
+        }
+        current=current.next
+    }
+    return secLargest
+}
+function thirdLargest (head){
+    let largest=-Infinity
+    let secLargest=-Infinity
+    let thirdLargest=-Infinity
+    let current=head
+    while(current){
+        if(current.value>largest){
+            thirdLargest=secLargest
+            secLargest=largest
+            largest=current.value
+        }else if(current.value>secLargest && current.value<largest){
+            thirdLargest=secLargest
+            secLargest=current.value
+        }else if(current.value>thirdLargest && current.value<secLargest){
+            thirdLargest=current.value
+        }
+        current=current.next
+    }
+    return thirdLargest
+}
+
+
+
 const list = new LinkedList()
 list.append(20)
-list.append(30)
+list.append(90)
 list.append(40)
 list.append(100)
 list.append(200)
@@ -147,5 +197,7 @@ list.append(10)
 list.append(6)
 list.append(6)
 
-
+console.log(largest(list.head));
+console.log(secLargest(list.head));
+console.log(thirdLargest(list.head));
 list.print()

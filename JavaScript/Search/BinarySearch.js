@@ -14,12 +14,15 @@ const BinarySearch = (arr, target) => {
     return -1;
 }
 
+
 const recursiveSearch = (arr, target) => {
     return helper(arr, target, 0, arr.length - 1)
 }
 
+
+
 const helper = (arr, target, start, end) => {
-    if(start>end)return -1;
+    if (start > end) return -1;
     let middle = Math.floor(start + (end - start) / 2)
     if (arr[middle] === target) {
         return middle

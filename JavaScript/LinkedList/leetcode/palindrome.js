@@ -28,12 +28,7 @@ class LinkedList {
             current = current.next;
         }
     }
-
-
-
-
 }
-
 function isPalindrome(head) {
     if (head === null) {
         console.log("list is empty");
@@ -62,7 +57,7 @@ function reverseList(head) {
     let next = null
     while (curr) {
         next = curr.next;
-        curr.next = prev;
+        curr.next = prev;  
         prev = curr;
         curr = next;
     }

@@ -137,15 +137,71 @@ class LinkedList {
 
 
 }
-const list = new LinkedList()
-list.append(20)
-list.append(30)
-list.append(40)
-list.append(100)
-list.append(200)
-list.append(10)
-list.append(6)
-list.append(6)
+function print(list) {
+
+    if (!list.head) {
+        console.log("list is empty");
+    } else {
+        let curr = list.head;
+        let listValue = ''
+        while (curr) {
+            listValue += `${curr.value} `
+            curr = curr.next
+        }
+        console.log(listValue);
+    }
+}
+
+// var mergeTwoLists = function (list1, list2) {
+
+//     //    let current=list1.head
+
+//     //     while(current.next){
+
+//     //         current=current.next
+//     //     }
+//     //     current.next=list2.head
+
+//     list1.tail.next = list2.head
+//     list1.tail=list2.tail
+
+//     // need to sort
+//     let temp = list1.head
+//     while (temp) {
+//         if (temp.val > temp.next.val) {
+//             let copy = temp.val
+//             temp.val = temp.next.val
+//             temp.next.val = copy
+//         }
+//     }
+//     return 
+
+// };
+
+function mergeTwoLists(l1, l2) {
+    if (!l1) return l2;
+    if (!l2) return l1;
+    if (l1.val < l2.val) {
+        l1.next = mergeTwoLists(l1.next, l2);
+        return l1;
+    } else {
+        l2.next = mergeTwoLists(l2.next, l1);
+        return l2;
+    }
+}
+const list1 = new LinkedList()
+list1.append(1)
+list1.append(2)
+list1.append(3)
+const list2 = new LinkedList()
+list2.append(1)
+list2.append(3)
+list2.append(4)
 
 
-list.print()
+list1.print()
+list2.print()
+
+let m= mergeTwoLists(list1, list2)
+print(m)
+list1.print()

@@ -13,8 +13,23 @@ function subarraySum(arr, sum) {
             console.log("Sum found between indexes " + start + " and " + i);
             return
         }
+        
     }
     console.log("No subarray found");
 }
 
-subarraySum([1, 4, 20, 3, 10, 5], 15 )
+function zzz(arr,sum){
+    let i=0
+    let t=i+1
+    for ( i = 0; i < arr.length; i++) {
+       
+            if(arr[i]+ arr[t]== sum){
+                console.log(arr[i]+ "+" +arr[t])
+            }
+        t++
+    }
+}
+
+var arr=[2, 4, 1, 3, 10, 5,10,5]
+var sum = 6
+subarraySum(arr,sum);

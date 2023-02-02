@@ -4,7 +4,7 @@ function peakElem (arr){
     let peak=[]
     for(let i=0; i<arr.length; i++){
         if(arr[i]>arr[i-1] && arr[i]>arr[i+1]){
-            peak[peak.length]=arr[i]
+            peak.push(arr[i])
         }
     }
     return peak

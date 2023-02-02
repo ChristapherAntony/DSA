@@ -8,8 +8,8 @@
 // Elements equal to 1 are in the middle of the array(mid pointer)
 // Elements greater than 1 are at the end of the array(high pointer)
 // It iterates through the array and uses if-else statements to determine which region the current element belongs in.When it encounters a 0,
-//  it swaps the element with the element at the low pointer, and then increments both the low and mid pointers.When it encounters a 1,
-//  it simply increments the mid pointer.When it encounters a 2, it swaps the element with the element at the high pointer, and then decrements
+// it swaps the element with the element at the low pointer, and then increments both the low and mid pointers.When it encounters a 1,
+// it simply increments the mid pointer.When it encounters a 2, it swaps the element with the element at the high pointer, and then decrements
 // the high pointer.
 
 function dutch_flag_sort(arr) {

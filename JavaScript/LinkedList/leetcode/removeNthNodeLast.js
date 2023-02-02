@@ -1,3 +1,4 @@
+
 class Node {
     constructor(value) {
         this.value = value
@@ -137,6 +138,51 @@ class LinkedList {
 
 
 }
+// var removeNthFromEnd = function (head, n) {
+//     let first = head;
+//     let second = head;
+//     for (let i = 0; i < n; i++) {
+//         first = first.next;
+//     }
+//     if (!first) {
+//         return head.next;
+//     }
+//     while (first.next) {
+//         first = first.next;
+//         second = second.next;
+//     }
+//     second.next = second.next.next;
+//     return head;
+// }
+
+
+
+
+
+
+function removeNthFromEnd(head, n) {
+    let first = head;
+    let second = head;
+    let i = 0;
+    while (first && i < n) {
+        first = first.next;
+        i++;
+    }
+    console.log(first);
+    if(!first) return head.next;
+    while (first) {
+        first = first.next;
+        second = second.next;
+    }
+    second.next = second.next.next;
+    return head;
+}
+
+
+
+
+
+
 const list = new LinkedList()
 list.append(20)
 list.append(30)
@@ -145,7 +191,12 @@ list.append(100)
 list.append(200)
 list.append(10)
 list.append(6)
-list.append(6)
+list.append(8)
+list.print()
 
+removeNthFromEnd(list.head,7)
 
 list.print()
+
+
+

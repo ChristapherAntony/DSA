@@ -6,6 +6,7 @@ const LinearSearch = (arr, target) => {
     }
 
     return -1
+    
 }
 
 

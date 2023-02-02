@@ -74,29 +74,29 @@ class LinkedList {
             for (let i = 0; i < index - 1; i++) {
                 prev = prev.next
             }
-            removedNode=prev.next
-            prev.next=removedNode.next
+            removedNode = prev.next
+            prev.next = removedNode.next
         }
         this.size--
         return removedNode.value
 
     }
-    removeValue(value){
-        if(this.isEmpty()){
+    removeValue(value) {
+        if (this.isEmpty()) {
             return null;
         }
-        if(this.head.value===value){
-            this.head=this.head.next
+        if (this.head.value === value) {
+            this.head = this.head.next
             this.size--
             return value
-        }else{
-            let prev=this.head
-            while(prev.next && prev.next.value !== value){
-                prev=prev.next
+        } else {
+            let prev = this.head
+            while (prev.next && prev.next.value !== value) {
+                prev = prev.next
             }
-            if(prev.next){
+            if (prev.next) {
                 let removeNode = prev.next
-                prev.next =removeNode.next
+                prev.next = removeNode.next
                 this.size--
                 return value
             }
@@ -104,33 +104,35 @@ class LinkedList {
         }
 
     }
-    search(value){
-        if(this.isEmpty()){
+    search(value) {
+        if (this.isEmpty()) {
             return -1;
         }
-        let i=0
-        let curr=this.head
-        while(curr){
-            if(curr.value===value){
+        let i = 0
+        let curr = this.head
+        while (curr) {
+            if (curr.value === value) {
                 return i
             }
-            curr=curr.next
+            curr = curr.next
             i++
         }
         return -1
     }
 
-    reverse(){
-        let prev=null
-        let curr=this.head
-        while(curr){
-            let next =curr.next
-            curr.next=prev
-            prev=curr
-            curr=next
+    reverse() {
+        let prev = null//
+        let curr = this.head//1
+        let next = null  //2
+        while (curr) {
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
         }
-        this.head=prev
-   
+
+        this.head = prev
+
     }
 
     print() {
