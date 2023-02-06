@@ -1,9 +1,4 @@
-function swap(arr, i, j) {
-    let temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
-
+let swap = (arr, i, j) => [arr[i], arr[j]] = [arr[j], arr[i]]
 function quickSort1(arr) {
     helper(arr, 0, arr.length - 1)
     return arr
