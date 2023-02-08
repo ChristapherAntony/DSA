@@ -10,7 +10,8 @@ const selection = (arr) => {
 }
 
 
-let arr = [5, 4, 3, 2, 1]
+
+let arr = [5, 7, 1, -4, 9, 2, -3, 11, 5, 1, 3]
 selection(arr)
 console.log(arr);
 

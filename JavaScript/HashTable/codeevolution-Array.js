@@ -3,6 +3,13 @@ class HashTable {
         this.table = new Array(size)
         this.size = size
     }
+
+    hash2(key) {
+        let num = key.split("").reduce((acc, cur) => {
+          return acc + cur.charCodeAt(0);
+        }, 0);
+        return num % this.size;
+      }
     hash(key) {                     //accept a key type string
         let total = 0
         for (let i = 0; i < key.length; i++) {
@@ -29,6 +36,7 @@ class HashTable {
 
     set(key, value) {
         const index = this.hash(key)                                  // key hashed
+        const index2 = this.hash2(key)      
         const bucket = this.table[index]
         if (!bucket) {
             this.table[index] = [[key, value]]
@@ -88,4 +96,4 @@ table.set("age", 50)
 
 
 table.display()
-
+console.log(table[0[0]]);

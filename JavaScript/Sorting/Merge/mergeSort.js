@@ -5,9 +5,15 @@ function mergeSort(arr) {
     let secondHalf = arr.slice(middleIdx);
     return join(mergeSort(firstHalf), mergeSort(secondHalf));
 }
-
-
-
-let arr = [4, 4, 6, 2, 2, 9, 1]
+function join(firstHalf, secondHalf) {
+    let result = [], i = 0, j = 0;
+    while (i < firstHalf.length && j < secondHalf.length) {
+        if (firstHalf[i] <= secondHalf[j]) result.push(firstHalf[i++])
+        else result.push(secondHalf[j++])
+    }
+    return [...result, ...firstHalf.slice(i), ...secondHalf.slice(j)]
+}
+let arr = [5, 7, 1, -4, 9, 2, -3, 11, 5, 1, 3]
 // let arr = [5,4,3,2,1]
-console.log(selection(arr));
+console.log(mergeSort(arr));
+
