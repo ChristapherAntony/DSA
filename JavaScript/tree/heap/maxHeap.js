@@ -1,4 +1,4 @@
-class MinHeap {
+class Heap {
     constructor() {
         this.data = []
     }
@@ -15,39 +15,39 @@ class MinHeap {
         [arr[i], arr[j]] = [arr[j], arr[i]]
     }
     push(key) {
-        this.data.push(key); 
-        this.heapifyUp();
+        this.data.push(key); // pushed to end need to rearrange
+        this.heapifyUp()
     }
 
     heapifyUp() {
         let currentIdx = this.data.length - 1;
         let parentIdx = this.getParentIdx(currentIdx);
 
-        while (currentIdx > 0 && this.data[currentIdx] < this.data[parentIdx]) { 
+        while (currentIdx > 0 && this.data[currentIdx] > this.data[parentIdx]) { //if child is > parent node, swap
             this.swap(this.data, currentIdx, parentIdx);
             currentIdx = parentIdx;
             parentIdx = this.getParentIdx(currentIdx);
         }
     }
-    remove() {
-        const minValue = this.data[0]
+    poll() {
+        const maxValue = this.data[0]
         this.data[0] = this.data[this.data.length - 1]
-        this.data.length--; 
+        this.data.length--;  //assigned last value to the root
         this.heapifyDown()
-        return minValue
+        return maxValue
     }
     heapifyDown() {
         let currentIdx = 0;
         let leftChildIdx = this.getLeftChildIdx(currentIdx);
         let rightChildIdx = this.getRightChildIdx(currentIdx);
-        while (this.data[leftChildIdx]) {
-            let smallestChild = this.data[rightChildIdx] && this.data[rightChildIdx] < this.data[leftChildIdx]
+        while (this.data[leftChildIdx]) {//if left exists right also -- complete tree
+            let biggestChild = this.data[rightChildIdx] && this.data[rightChildIdx] > this.data[leftChildIdx]
                 ? rightChildIdx
                 : leftChildIdx;
 
-            if (this.data[currentIdx] > this.data[smallestChild]) {
-                this.swap(this.data, currentIdx, smallestChild);
-                currentIdx = smallestChild;
+            if (this.data[currentIdx] < this.data[biggestChild]) {
+                this.swap(this.data, currentIdx, biggestChild);
+                currentIdx = biggestChild;
                 leftChildIdx = this.getLeftChildIdx(currentIdx);
                 rightChildIdx = this.getRightChildIdx(currentIdx);
             } else {
@@ -57,7 +57,7 @@ class MinHeap {
     }
 }
 
-const heap = new MinHeap()
+const heap = new Heap()
 console.log(heap);
 heap.push(25)
 heap.push(15)
@@ -67,8 +67,8 @@ heap.push(45)
 console.log(heap.data);
 
 let a = []
-a.push(heap.remove())
-a.push(heap.remove())
+a.push(heap.poll())
+a.push(heap.poll())
 
 console.log(`top ${a.length} items `);
 console.log(a);
