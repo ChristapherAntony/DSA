@@ -1,61 +1,87 @@
-// stack array 
 class Node {
-    constructor(data) {
-        this.data = data
-        this.next = null
-    } 
+    constructor(value) {
+        this.value = value
+        this.left = null
+        this.right = null
+    }
 }
-class Stack {
+class BinarySearchTree {
     constructor() {
-        this.top = null
-        this.size = 0
+        this.root = null
     }
-    push(data) {
-        const newNode = new Node(data)
-        if (this.top == null) {
-            this.top = newNode
+    insert(value) {
+        let newNode = new Node(value)
+        let node = this.root
+        if (!node) {
+            this.root = newNode
+            return this
+        }
+        while (true) {
+            if (value < node.value) {
+                if (!node.left) {
+                    node.left = newNode
+                    return this
+                }
+                node = node.left
+            } else {
+                if (!node.right) {
+                    node.right = newNode
+                    return this
+                }
+                node = node.right
+            }
+        }
+    }
+    inOrderDisplay(node = this.root) {  // left-root-right
+        if (!node) return
+        this.inOrderDisplay(node.left)
+        process.stdout.write(`${node.value} `)
+        this.inOrderDisplay(node.right)
+    }
+    contain(value) {
+        if (!this.root) return false
+        let node = this.root
+        while (node) {
+            if (node.value === value) return true
+            if (node.value < node.value) {
+                node = node.left
+            } else {
+                node = node.right
+            }
+        }
+        return false
+    }
+    deleteValue(value, node = this.root) {
+        if (!this.root) return null
+        if (value < node.value) {
+            node.left = this.deleteValue(value, node.left)
+        } else if (value > node.value) {
+            node.right = this.deleteValue(value, node.right)
         } else {
-            newNode.next = this.top
-            this.top = newNode
+            if(!node.left) return node.right
+            if(!node.right) return node.left
+            node.value=this.getMinValue(node.right)
+            node.right=this.deleteValue(node.value,node.right)
         }
-        this.size++
+        return node
+
     }
-    pop() {
-        if (this.top == null) {
-            console.log("stack is underFlow");
-            return
-        }
-        this.top = this.top.next
-        this.size--
-    }
-    midValue(){
-        let slow=this.top
-        let fast=this.top
-        while(fast && fast.next){
-            fast=fast.next.next
-            slow=slow.next
-        }
-        return slow.data
-    }
-    display() {
-        let temp = this.top
-        if (temp === null) {
-            console.log("stack underflow");
-            return
-        }
-        while (temp) {
-            console.log(temp.data);
-            temp = temp.next
-        }
+    getMinValue(node) {
+        while (node.left) node = node.left
+        return node.value
     }
 }
 
-let stack = new Stack()
-stack.push(100)
-stack.push(200)
-stack.push(300)
-stack.push(400)
-stack.push(500)
-console.log(stack.midValue());
+let tree = new BinarySearchTree()
+
+let arr = [50, 25, 75, 30, 90, 15, 60]
+for (let i of arr) tree.insert(i)  //for of loop and insert arr to bst
+
+tree.inOrderDisplay()
+console.log();
+
+tree.deleteValue(15)
+tree.inOrderDisplay()
+
 
 

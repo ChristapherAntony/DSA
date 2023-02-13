@@ -29,7 +29,7 @@ class LinearQueue {
             newNode.next = this.front
             this.front = newNode
         } else {
-            while (temp.next !=null && temp.next.priority > priority) {
+            while (temp.next != null && temp.next.priority > priority) {
                 temp = temp.next
             }
             newNode.next = temp.next
@@ -61,6 +61,7 @@ class LinearQueue {
         console.log();
         return this.size
     }
+ 
 
 
 

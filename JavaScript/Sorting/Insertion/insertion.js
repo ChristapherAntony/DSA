@@ -10,7 +10,7 @@ const insertion = (arr) => {
     }
     return arr;
 }
-let arr = [5, 4, 3, 2, 1]
+let arr = [3,6,1,7,8,2]
 insertion(arr)
 console.log(arr);
 
