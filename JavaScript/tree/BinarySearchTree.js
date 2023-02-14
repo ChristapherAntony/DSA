@@ -216,13 +216,15 @@ class BinarySearchTree {
 
 
 const bst = new BinarySearchTree();
-let arr = [10, 5, 15, 2, 7, 12, 20, 15, 1,]
+// let arr = [10, 5, 15, 2, 7, 12, 20, 15, 1,]
+let arr=[5,64,1,3,44]
 for (let i of arr) bst.insert(i)
 bst.inOrder();
 console.log();
-bst.deleteValue(15)
+bst.deleteValue(44)
 
 bst.inOrder();
+console.log(bst.contains(44));
 
 
 

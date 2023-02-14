@@ -4,17 +4,15 @@ class TrieNode {
         this.isEnd = false;
     }
 }
-
 class Trie {
     constructor() {
         this.root = new TrieNode();
     }
-
     insert(word) {
         let current = this.root;
-
         for (let i = 0; i < word.length; i++) {
             let char = word.charAt(i);
+            console.log(char);
             let node = current.children.get(char);
             if (!node) {
                 node = new TrieNode();

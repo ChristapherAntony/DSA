@@ -1,75 +1,56 @@
-class MinHeap {
-    constructor() {
-        this.data = []
-    }
-    getParentIdx(i) {
-        return Math.floor((i - 1) / 2);
-    }
-    getLeftChildIdx(i) {
-        return (i * 2) + 1
-    }
-    getRightChildIdx(i) {
-        return (i * 2) + 2
-    }
-    swap(arr, i, j) {
-        [arr[i], arr[j]] = [arr[j], arr[i]]
-    }
-    push(key) {
-        this.data.push(key); 
-        this.heapifyUp();
-    }
+function swap(arr, i, j) {
+    [arr[i], arr[j]] = [arr[j], arr[i]]
+}
 
-    heapifyUp() {
-        let currentIdx = this.data.length - 1;
-        let parentIdx = this.getParentIdx(currentIdx);
+function heapifyUp(arr, idx = arr.length - 1) {
+    let currentIdx = idx;
+    let parentIdx = Math.floor((currentIdx - 1) / 2);
 
-        while (currentIdx > 0 && this.data[currentIdx] < this.data[parentIdx]) { 
-            this.swap(this.data, currentIdx, parentIdx);
-            currentIdx = parentIdx;
-            parentIdx = this.getParentIdx(currentIdx);
-        }
+    while (currentIdx > 0 && arr[currentIdx] < arr[parentIdx]) {
+        swap(arr, currentIdx, parentIdx)
+        currentIdx = parentIdx;
+        parentIdx = Math.floor((currentIdx - 1) / 2);
     }
-    remove() {
-        const minValue = this.data[0]
-        this.data[0] = this.data[this.data.length - 1]
-        this.data.length--; 
-        this.heapifyDown()
-        return minValue
-    }
-    heapifyDown() {
-        let currentIdx = 0;
-        let leftChildIdx = this.getLeftChildIdx(currentIdx);
-        let rightChildIdx = this.getRightChildIdx(currentIdx);
-        while (this.data[leftChildIdx]) {
-            let smallestChild = this.data[rightChildIdx] && this.data[rightChildIdx] < this.data[leftChildIdx]
-                ? rightChildIdx
-                : leftChildIdx;
+}
 
-            if (this.data[currentIdx] > this.data[smallestChild]) {
-                this.swap(this.data, currentIdx, smallestChild);
-                currentIdx = smallestChild;
-                leftChildIdx = this.getLeftChildIdx(currentIdx);
-                rightChildIdx = this.getRightChildIdx(currentIdx);
-            } else {
-                return;
-            }
+function heapifyDown(arr, currentIdx, endIdx) {
+    let leftChildIdx = 2 * currentIdx + 1;
+    let rightChildIdx = 2 * currentIdx + 2;
+
+    while (leftChildIdx <= endIdx) {
+        let smallestChild = rightChildIdx <= endIdx && arr[rightChildIdx] < arr[leftChildIdx]
+            ? rightChildIdx
+            : leftChildIdx;
+
+        if (arr[currentIdx] > arr[smallestChild]) {
+            swap(arr, currentIdx, smallestChild);
+            currentIdx = smallestChild;
+            leftChildIdx = 2 * currentIdx + 1;
+            rightChildIdx = 2 * currentIdx + 2;
+        } else {
+            return;
         }
     }
 }
 
-const heap = new MinHeap()
-console.log(heap);
-heap.push(25)
-heap.push(15)
-heap.push(6)
-heap.push(80)
-heap.push(45)
-console.log(heap.data);
+function heapSort(arr) {
+    const n = arr.length;
 
-let a = []
-a.push(heap.remove())
-a.push(heap.remove())
+    // Build min heap using heapifyUp()
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+        heapifyDown(arr, i, n - 1);
+    }
 
-console.log(`top ${a.length} items `);
-console.log(a);
-console.log(heap);
+    // Extract minimum element and put it at the beginning of the array using heapifyDown()
+    for (let i = n - 1; i > 0; i--) {
+        swap(arr, 0, i);
+        heapifyDown(arr, 0, i - 1);
+    }
+
+    return arr;
+}
+
+// Example usage
+const arr = [5, 2, 9, 1, 5, 6];
+const sortedArr = heapSort(arr);
+console.log(sortedArr); // Output: [1, 2, 5, 5, 6, 9]
