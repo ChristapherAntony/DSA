@@ -1,32 +1,36 @@
 function swap(arr, i, j) {
-    [arr[i], arr[j]] = [arr[j], arr[i]]
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
 }
 
-function heapifyUp(arr, idx = arr.length - 1) {
+function getParentIdx(i) {
+    return Math.floor((i - 1) / 2);
+}
+
+function getLeftChildIdx(i) {
+    return (i * 2) + 1
+}
+
+function getRightChildIdx(i) {
+    return (i * 2) + 2
+}
+
+function heapifyDown(arr, idx, end) {
     let currentIdx = idx;
-    let parentIdx = Math.floor((currentIdx - 1) / 2);
+    let leftChildIdx = getLeftChildIdx(currentIdx);
+    let rightChildIdx = getRightChildIdx(currentIdx);
 
-    while (currentIdx > 0 && arr[currentIdx] > arr[parentIdx]) {
-        swap(arr, currentIdx, parentIdx)
-        currentIdx = parentIdx;
-        parentIdx = Math.floor((currentIdx - 1) / 2);
-    }
-}
-
-function heapifyDown(arr, currentIdx, endIdx) {
-    let leftChildIdx = 2 * currentIdx + 1;
-    let rightChildIdx = 2 * currentIdx + 2;
-
-    while (leftChildIdx <= endIdx) {
-        let largestChild = rightChildIdx <= endIdx && arr[rightChildIdx] > arr[leftChildIdx]
+    while (leftChildIdx <= end) {
+        let largestChild = rightChildIdx <= end && arr[rightChildIdx] > arr[leftChildIdx]
             ? rightChildIdx
             : leftChildIdx;
 
         if (arr[currentIdx] < arr[largestChild]) {
             swap(arr, currentIdx, largestChild);
             currentIdx = largestChild;
-            leftChildIdx = 2 * currentIdx + 1;
-            rightChildIdx = 2 * currentIdx + 2;
+            leftChildIdx = getLeftChildIdx(currentIdx);
+            rightChildIdx = getRightChildIdx(currentIdx);
         } else {
             return;
         }
@@ -35,14 +39,16 @@ function heapifyDown(arr, currentIdx, endIdx) {
 
 function heapSort(arr) {
     const n = arr.length;
-    // Build max heap using heapifyUp()
-    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+    console.log(n);
+    // build heap
+    for (let i = getParentIdx(n - 1); i >= 0; i--) {
         heapifyDown(arr, i, n - 1);
     }
-    // Extract maximum element and put it at the end of the array using heapifyDown()
-    for (let i = n - 1; i > 0; i--) {
-        swap(arr, 0, i);
-        heapifyDown(arr, 0, i - 1);
+
+    // sort array
+    for (let end = n - 1; end > 0; end--) {
+        swap(arr, 0, end);
+        heapifyDown(arr, 0, end - 1);
     }
     return arr;
 }
@@ -50,4 +56,5 @@ function heapSort(arr) {
 // Example usage
 const arr = [5, 2, 9, 1, 5, 6];
 const sortedArr = heapSort(arr);
-console.log(sortedArr); // Output: [9, 6, 5, 5, 2, 1]
+console.log(sortedArr); // Output: [1, 2, 5, 5, 6, 9]
+

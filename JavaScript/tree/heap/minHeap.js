@@ -60,6 +60,7 @@ class MinHeap {
             this.heapifyDown(i)
         }
     }
+    
 }
 
 const heap = new MinHeap()
