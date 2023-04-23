@@ -15,11 +15,12 @@ const BinarySearch = (arr, target) => {
 }
 
 
+
+
+
 const recursiveSearch = (arr, target) => {
     return helper(arr, target, 0, arr.length - 1)
 }
-
-
 
 const helper = (arr, target, start, end) => {
     if (start > end) return -1;
@@ -35,5 +36,5 @@ const helper = (arr, target, start, end) => {
 }
 
 let arr = [34, 56, 78, 90, 121, 344, 567, 999]
-// console.log(BinarySearch(arr, 991));
-console.log(recursiveSearch(arr, 34));
+console.log(BinarySearch(arr, 991));
+// console.log(recursiveSearch(arr, 34));

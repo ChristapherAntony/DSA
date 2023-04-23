@@ -1,31 +1,13 @@
-const merge = (arr1, arr2) => {
-    let arr1Length = arr1.length
-    let arr2Length = arr2.length
+var twoSum = function (nums, target) {
+    let obj = {};
+    for (const i in nums) {
+        let x = target - nums[i]
+        if (x in obj) return [obj[x], i]
+        obj[nums[i]] = i
+    }
+    return null
+};
 
-    let i = 0
-    let j = 0
-    let result = []
-    while (i < arr1Length && j < arr2Length) {
-        if (arr1[i] < arr2[j]) {
-            result.push(arr1[i])
-            i++
-        } else {
-            result.push(arr2[j])
-            j++
-        }
-    }
-    while (i < arr1Length) {
-        result.push(arr1[i])
-        i++
-    }
-    while (j < arr2Length) {
-        result.push(arr2[j])
-        j++
-    }
-    return result;
-}
-
-const arr1 = [1, 2, 9, 20]
-const arr2 = [3, 4, 12, 25]
-const merged = merge(arr1, arr2);
-console.log(merged); 
+let arr = [2, 7, 11, 15]
+let tgt = 9
+console.log(twoSum(arr, tgt));
