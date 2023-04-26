@@ -11,11 +11,9 @@ const insertion = (arr) => {
     return arr;
 }
 let arr = [3,6,1,7,8,2]
+console.log(arr.sort());
 insertion(arr)
 console.log(arr);
-
-
-
 
 
 

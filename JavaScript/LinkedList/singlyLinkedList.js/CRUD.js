@@ -183,40 +183,40 @@ function printReverse(head) {
 }
 
 
-const findMiddle=(head)=>{
-    let slow=head
-    let fast=head
-    while(fast && fast.next){
-        slow=slow.next
-        fast=fast.next.next
+const findMiddle = (head) => {
+    let slow = head
+    let fast = head
+    while (fast && fast.next) {
+        slow = slow.next
+        fast = fast.next.next
     }
     return slow
 }
-const reverse=(head)=>{
-    let prev=null
-    let curr=head
-    let next=null
+const reverse = (head) => {
+    let prev = null
+    let curr = head
+    let next = null
 
-    while(curr){
-        next=curr.next
-        curr.next=prev
+    while (curr) {
+        next = curr.next
+        curr.next = prev
 
-        prev=curr
-        curr=next
+        prev = curr
+        curr = next
     }
-    head=prev
+    head = prev
     return head
 }
 
-function isPalindrome(head){
-    let middleNode=findMiddle(head)
-    let reverseSecondHalf=reverse(middleNode)
+function isPalindrome(head) {
+    let middleNode = findMiddle(head)
+    let reverseSecondHalf = reverse(middleNode)
 
-    let current=head
-    while(reverseSecondHalf){
-        if(current.data!==reverseSecondHalf.data) return false
-        current=current.next
-        reverseSecondHalf=reverseSecondHalf.next
+    let current = head
+    while (reverseSecondHalf) {
+        if (current.data !== reverseSecondHalf.data) return false
+        current = current.next
+        reverseSecondHalf = reverseSecondHalf.next
     }
     return true
 }
@@ -226,7 +226,7 @@ function isPalindrome(head){
 
 
 let list = new LinkedList()
-list.addArray([1,2,2,1])
+list.addArray([1, 2, 2, 1])
 
 list.display()
 console.log(isPalindrome(list.head));
