@@ -3,6 +3,7 @@ class Graph {
     this.adjacencyList = new Map();
   }
 
+
   addVertex(vertex) {
     if (!this.adjacencyList.has(vertex)) {
       this.adjacencyList.set(vertex, new Set());
@@ -63,9 +64,9 @@ class Graph {
     traverse(startingVertex);
     console.log();
   }
+
   removeVertex(vertex) {
     if (!this.adjacencyList.has(vertex)) return;
-
 
     // Remove the vertex and its edges from the adjacency list
     this.adjacencyList.delete(vertex)
@@ -74,13 +75,13 @@ class Graph {
     }
   }
 
-
-
   display() {
     for (let [vertex, edges] of this.adjacencyList) {
       console.log(`${vertex}: ${[...edges].join(', ')}`);
     }
   }
+
+
 }
 
 const graph = new Graph();

@@ -143,15 +143,15 @@ for (let i of arr) bst.insert(i)
 
 bst.inOrder();
 console.log();
-bst.preOrder();
-console.log();
-bst.postOrder();
-console.log();
+// bst.preOrder();
+// console.log();
+// bst.postOrder();
+// console.log();
 bst.deleteValue(44)
 
 bst.inOrder();
-console.log(bst.contains(44));
-bst.traverseBreadthFirst()
+// console.log(bst.contains(44));
+// bst.traverseBreadthFirst()
 
 
 
