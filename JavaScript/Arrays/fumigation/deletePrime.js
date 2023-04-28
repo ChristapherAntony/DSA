@@ -1,5 +1,6 @@
 
 
+
 function deletePrime(arr) {
     const isPrime = (num) => {
         if (num <= 1) return false

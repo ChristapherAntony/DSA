@@ -74,6 +74,15 @@ class BinarySearchTree {
             process.stdout.write(`${node.value}  `)
         }
     }
+    traverseBreadthFirst() {
+        const queue = [this.root];
+        while (queue.length > 0) {
+            const node = queue.shift();
+            process.stdout.write(`${node.value}  `);
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+    }
     contains(value) {
         if (!this.root) return false;
         let current = this.root;
@@ -116,15 +125,7 @@ class BinarySearchTree {
         while (node.left) node = node.left
         return node.value
     }
-    traverseBreadthFirst() {
-        const queue = [this.root];
-        while (queue.length > 0) {
-            const node = queue.shift();
-            process.stdout.write(`${node.value}  `);
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
-        }
-    }
+
 
 
 

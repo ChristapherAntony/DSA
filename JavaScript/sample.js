@@ -1,70 +1,41 @@
-//singly linked list
 
 class Node {
-    constructor(data) {
-        this.data = data
-        this.next = null
+    constructor(value) {
+        this.value = value
+        this.left = null
+        this.right = null
     }
 }
-
-class LinkedList {
+class BST {
     constructor() {
-        this.head = null
-        this.tail = null
+        this.root = null
     }
-    append(value) {
+    insert(value) {
         let newNode = new Node(value)
-        if (!this.head) {
-            this.head = this.tail = newNode
-            return
+        let node = this.root;
+        if (!node) {
+            this.root = newNode
+            return this
         }
-        this.tail.next = newNode
-        this.tail = newNode
-        newNode.next = null
-    }
-    prepend(value) {
-        let newNode = new Node(value)
-        if (!this.head) {
-            this.head = this.tail = newNode
-            return
-        }
-        newNode.next = this.head
-        this.head = newNode
-    }
-    display() {
-        let curr = this.head;
-        if (!curr) return;
-        while (curr) {
-            console.log(curr.data);
-            curr = curr.next;
+        while (true) {
+            if (value < node.value) {
+                if (!node.left) {
+                    node.left = newNode
+                    return this
+                }
+                node = node.left
+            } else {
+                if (!node.right) {
+                    node.right = newNode
+                    return this
+                }
+                node = node.right
+            }
         }
     }
-    arrayToLinkedList(arr) {
-        for (const i of arr) {
-            this.append(i)
-        }
-    }
-    search(tgt) {
-        let curr = this.head;
-        if (!curr) return null;
-        while (curr) {
-            if (curr.data === tgt) return curr
-            curr = curr.next
-        }
-        return null
-    }
-    
-
 }
 
-let myList = new LinkedList()
-
-myList.append(10)
-myList.append(20)
-myList.append(30)
-myList.prepend(40)
-myList.prepend(50)
-
-
-
-myList.display()
+const bst = new BST();
+// let arr = [50,25,75,12,35,60,90,5,20,30,40,55,65,80,100]
+let arr = [50, 64, 31, 13, 44, 55, 25, 15]
+for (let i of arr) bst.insert(i)
