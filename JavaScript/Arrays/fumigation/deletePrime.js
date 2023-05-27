@@ -1,6 +1,4 @@
 
-
-
 function deletePrime(arr) {
     const isPrime = (num) => {
         if (num <= 1) return false
@@ -28,6 +26,7 @@ function deleteIdx(array, pos) {
     }
 }
 
+
 function deleteEven(arr) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] % 2 === 0) {
@@ -44,9 +43,10 @@ function deleteEven(arr) {
 let arr = [4, 6, 5, 3, 8, 7, 10, 11, 14, 15];
 console.log(arr);
 deletePrime(arr)
-
-deleteEven(arr)
 console.log(arr);
+
+// deleteEven(arr)
+// console.log(arr);
 
 
 

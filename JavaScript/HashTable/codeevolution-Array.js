@@ -16,7 +16,8 @@ class HashTable {
             total += key.charCodeAt(i)
         }
         return total % this.size
-    }//creation of hash by key  
+    }//creation of hash by key
+     
     // types of hashing methods
 
     // hash(data) {
@@ -48,7 +49,7 @@ class HashTable {
             }
         }
     }
-
+ 
     get(key) {
         const index = this.hash(key)
         const bucket = this.table[index]

@@ -14,9 +14,11 @@ function reverseString(str){
 console.log(reverseString(str));
 
 
+
+
 ////////////////////////////////////////////////////////////////////
 
 function reverseString2(str) {
-    return str.split('').reverse().join('');
+    return str.split('').reverse().join('')
 }
 console.log(reverseString2("hello")); // will output "olleh"

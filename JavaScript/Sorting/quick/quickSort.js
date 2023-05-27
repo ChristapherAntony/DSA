@@ -9,6 +9,7 @@ function helper(arr, startIdx, endIdx) {
     let pivotIdx = startIdx
     let leftIdx = startIdx + 1
     let rightIdx = endIdx
+    
     while (leftIdx <= rightIdx) {
         if (arr[leftIdx] > arr[pivotIdx] && arr[rightIdx] < arr[pivotIdx]) {
             swap(arr, leftIdx, rightIdx)

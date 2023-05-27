@@ -1,18 +1,14 @@
-//delete prime number
-
-function isPrime(num) {
-    if (num <= 1) return false
-    for (let i = 2; i < num; i++) {
-        if (num % i === 0) return true
-    }
-}
-
-
-function deletePrimeNumber(arr) {
-    for (let i = 0; i < arrarr.length; i++) {
-        if (isPromise(arr[i])) {
-
+var findDisappearedNumbers = function (nums) {
+    let set = new Set(nums)
+    let result = [];
+    for (let i = 1; i <= nums.length; i++) {
+        if(!set.has(i)){
+            result.push(i)
         }
-
     }
-}
+    return result;
+};
+
+
+
+console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]));

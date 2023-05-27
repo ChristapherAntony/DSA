@@ -59,9 +59,11 @@ class Graph {
           traverse(neighbor);
         }
       }
-    };
+
+    }
 
     traverse(startingVertex);
+
     console.log();
   }
 
@@ -74,13 +76,11 @@ class Graph {
       edges.delete(vertex);
     }
   }
-
   display() {
     for (let [vertex, edges] of this.adjacencyList) {
       console.log(`${vertex}: ${[...edges].join(', ')}`);
     }
   }
-
 
 }
 
@@ -91,10 +91,10 @@ graph.insert(1, 3, true);
 graph.insert(2, 4, false);
 graph.addVertex(10)
 graph.insert(15, 10, true);
-// graph.display();
+graph.display();
 
 console.log("BFS:");
 graph.BFS(3);
 
-// console.log("DFS:");
-// graph.DFS(1);
+console.log("DFS:");
+graph.DFS(3);

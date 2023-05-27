@@ -1,4 +1,5 @@
 // Count number of occurrences (or frequency) in a sorted array by given number
+
 function countFrequency(arr, x) {
     var count = 0
     for (let i = 0; i < arr.length; i++) {
@@ -8,6 +9,7 @@ function countFrequency(arr, x) {
     }
     return count
 }
+
 function frequencyOfEach(arr) {
     let res = {}
     for (let i = 0; i < arr.length; i++) {
